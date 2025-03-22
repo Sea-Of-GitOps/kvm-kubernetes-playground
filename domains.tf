@@ -7,8 +7,8 @@ resource "libvirt_domain" "control-plane" {
   count = local.control_plane_nodes
 
   name   = "control-plane-${count.index}"
-  memory = "1024"
-  vcpu   = 1
+  memory = "2048"
+  vcpu   = 2
 
   disk {
     volume_id = libvirt_volume.control_plane_image[count.index].id
@@ -29,8 +29,8 @@ resource "libvirt_domain" "worker" {
   count = local.worker_nodes
 
   name   = "worker-${count.index}"
-  memory = "1024"
-  vcpu   = 1
+  memory = "2048"
+  vcpu   = 2
 
   disk {
     volume_id = libvirt_volume.worker_image[count.index].id
